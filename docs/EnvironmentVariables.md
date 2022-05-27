@@ -12,7 +12,7 @@ cp .env.example .env
 
 Variables:
 
-Most of the variables are setup and ready for you to start development. The only ones you will absolutely need to setup are the specefic OAuth credentials that you are going to be using for [next-auth](https://next-auth.js.org/).
+Most of the variables are setup and ready for you to start development. The only ones you will absolutely need to setup are the specific OAuth credentials that you are going to be using for [next-auth](https://next-auth.js.org/).
 
 - `NEXTAUTH_SECRET` is a random unique string.
 
