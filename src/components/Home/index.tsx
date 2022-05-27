@@ -9,7 +9,6 @@ import { useSession } from 'next-auth/react';
 
 export function Home() {
 	const { data: session } = useSession();
-	const [notes, setNotes] = React.useState([]);
 	React.useEffect(() => {
 		fetch('/api/v1/users/me');
 	}, []);
