@@ -11,7 +11,7 @@ export function ViewNote({ noteId }: { noteId: any }) {
 	const router = useRouter();
 
 	React.useEffect(() => {
-		fetch('http://localhost:3000/api/v1/notes/note', {
+		fetch('/api/v1/notes/note', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
