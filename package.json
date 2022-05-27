@@ -2,6 +2,10 @@
 	"name": "next-prisma-auth-template",
 	"version": "0.0.0",
 	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/masonschafercodes/next-prisma-auth-template.git"
+	},
 	"scripts": {
 		"dev": "concurrently -c green.bold,blue.bold 'yarn:dev:docker' 'yarn:dev:next'",
 		"dev:docker": "docker compose up",
