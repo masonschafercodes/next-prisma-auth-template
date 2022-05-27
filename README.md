@@ -40,7 +40,7 @@ The new project should now be available on: [localhost:3000](http://localhost:30
 
 ## Core Tech
 
-The core foundation of the template is build with the following:
+The core foundation of the template is built with the following:
 
 - **[Next.js](https://nextjs.org/)**
 - **[Prisma](https://www.prisma.io/)**
