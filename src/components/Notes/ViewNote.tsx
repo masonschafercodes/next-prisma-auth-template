@@ -1,14 +1,34 @@
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { Button } from '../ui/Button';
 import { Container } from '../ui/Container';
 import { Link } from '../ui/Link';
 
+type UserType = {
+	createdAt: string;
+	email: string;
+	id: string;
+	name: string;
+	updatedAt: string;
+}
+
+type ViewNote = {
+	createdAt: string;
+	id: string;
+	text: string;
+	updatedAt: string;
+	user: UserType;
+	userId: string;
+}
+
 export function ViewNote({ noteId }: { noteId: any }) {
-	const [note, setNote] = React.useState<string>('');
+	const [note, setNote] = React.useState<ViewNote | null>(null);
 	const [error, setError] = React.useState<string>('');
 
 	const router = useRouter();
+
+	const { data: session } = useSession();
 
 	React.useEffect(() => {
 		fetch('/api/v1/notes/note', {
@@ -25,7 +45,7 @@ export function ViewNote({ noteId }: { noteId: any }) {
 				if (data.error) {
 					setError(data.error);
 				} else {
-					setNote(data.note.text);
+					setNote(data.note);
 				}
 			});
 	}, []);
@@ -48,9 +68,22 @@ export function ViewNote({ noteId }: { noteId: any }) {
 		}
 	}
 	return (
-		<Container title="Note" action={!error ? <Button onClick={deleteNote}>Delete Note</Button> : <Link href='/notes'>Go Back</Link>}>
-			{note && <div className="prose-xl">{note}</div>}
-			{error && <div className="text-red-500 p-2 bg-red-200 border border-red-400 rounded font-semibold">{error}</div>}
+		<Container
+			title="Note"
+			action={
+				!error && note?.user.email === session?.user?.email ? (
+					<Button onClick={deleteNote}>Delete Note</Button>
+				) : (
+					<Link href="/notes">Go Back</Link>
+				)
+			}
+		>
+			{note && <div className="prose-xl">{note.text}</div>}
+			{error && (
+				<div className="text-red-500 p-2 bg-red-200 border border-red-400 rounded font-semibold">
+					{error}
+				</div>
+			)}
 		</Container>
 	);
 }

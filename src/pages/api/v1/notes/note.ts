@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
 import { prisma } from '~/utils/prisma';
 
 export default async function handler(
@@ -14,6 +13,9 @@ export default async function handler(
 		where: {
 			id: req.body.noteId,
 		},
+		include: {
+			user: true,
+		}
 	});
 
 	if (note) {
