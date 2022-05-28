@@ -6,9 +6,7 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse,
 ) {
-	const session = await getSession({ req });
 
-	if (!session) return res.status(401).end();
 	if (!req.body.noteId)
 		return res.status(400).json({ error: 'Missing noteId', note: null });
 
