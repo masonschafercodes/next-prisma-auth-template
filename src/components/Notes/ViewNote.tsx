@@ -11,7 +11,7 @@ type UserType = {
 	id: string;
 	name: string;
 	updatedAt: string;
-}
+};
 
 type ViewNote = {
 	createdAt: string;
@@ -20,7 +20,7 @@ type ViewNote = {
 	updatedAt: string;
 	user: UserType;
 	userId: string;
-}
+};
 
 export function ViewNote({ noteId }: { noteId: any }) {
 	const [note, setNote] = React.useState<ViewNote | null>(null);

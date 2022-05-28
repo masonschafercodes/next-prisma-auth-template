@@ -5,7 +5,6 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse,
 ) {
-
 	if (!req.body.noteId)
 		return res.status(400).json({ error: 'Missing noteId', note: null });
 
@@ -15,7 +14,7 @@ export default async function handler(
 		},
 		include: {
 			user: true,
-		}
+		},
 	});
 
 	if (note) {

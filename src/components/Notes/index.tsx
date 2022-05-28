@@ -31,7 +31,7 @@ export default function Notes() {
 					<EmptyNotification />
 				) : (
 					notes.map((note) => (
-						<div className='my-2'>
+						<div className="my-2">
 							<Link key={note.id} href={`/notes/${note.id}`}>
 								<a className="flex items-center justify-between space-x-2 rounded p-4 bg-gray-500 bg-opacity-20 w-full">
 									<div className="truncate">{note.text}</div>

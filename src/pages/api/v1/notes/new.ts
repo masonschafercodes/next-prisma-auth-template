@@ -8,22 +8,22 @@ export default async function handler(
 ) {
 	const session = await getSession({ req });
 
-    const user = await prisma.user.findUnique({
-        where: {
-            email: session?.user?.email!,
-        }
-    });
+	const user = await prisma.user.findUnique({
+		where: {
+			email: session?.user?.email!,
+		},
+	});
 
-    if (user) {
-        await prisma.note.create({
-            data: {
-                text: req.body.text,
-                userId: user.id,
-            }
-        });
+	if (user) {
+		await prisma.note.create({
+			data: {
+				text: req.body.text,
+				userId: user.id,
+			},
+		});
 
-        return res.status(201).end();
-    } else { 
-        return res.status(401).end();
-    }
+		return res.status(201).end();
+	} else {
+		return res.status(401).end();
+	}
 }

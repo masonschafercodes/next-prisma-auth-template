@@ -16,9 +16,9 @@ if (process.env.NODE_ENV === 'production') {
 	if (!global.__globalPrisma__) {
 		global.__globalPrisma__ = new PrismaClient({
 			// This logging is better for production
-            // log: ['error', 'warn'],
+			// log: ['error', 'warn'],
 
-            // This is good for local development, but not for production
+			// This is good for local development, but not for production
 			log: ['query', 'error', 'warn'],
 		});
 	}

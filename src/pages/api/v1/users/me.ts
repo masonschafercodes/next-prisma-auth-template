@@ -14,12 +14,12 @@ export default async function handler(
 		},
 		include: {
 			notes: true,
-		}
+		},
 	});
 
 	if (user) {
 		res.status(200).json({
-			me: user
+			me: user,
 		});
 	} else {
 		const newUser = await prisma.user.create({

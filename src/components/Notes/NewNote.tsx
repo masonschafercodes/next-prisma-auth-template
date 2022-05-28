@@ -33,8 +33,7 @@ export function NewNote() {
 				}
 			})
 			.catch((err) => console.error(err))
-            .finally(() => setIsSubmitting(false));
-
+			.finally(() => setIsSubmitting(false));
 	};
 	return (
 		<Container title="New Note" action={<Link href="/notes">Go Back</Link>}>
